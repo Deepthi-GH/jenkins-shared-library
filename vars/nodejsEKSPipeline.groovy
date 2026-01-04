@@ -163,21 +163,17 @@ def call(Map configMap){
             }
         } */
 
-        stage('Deploy') {
-            //  input {
-            //     message "Should we continue?"
-            //     ok "Yes, we should."
-            //     submitter "alice,bob"
-            //     parameters {
-            //         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-            //     }
-            // }
-          
+        stage('Trigger Dev Deploy') {
+         
             steps {
                 script {
-                    sh """
-                        echo "Deploying"
-                    """
+                   build job: '../catalogue-deploy',
+                   wait: false,
+                   propagate: false,
+                   parameters: [
+                    string(name: 'appVersion',value: "${appVersion}"),
+                    string(name: 'deploy_to',value: "dev")
+                   ]
 
                 }
                 
