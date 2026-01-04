@@ -79,7 +79,7 @@ def call(Map configMap){
         
         stage('Dependabot Security Gate') {
             when {
-                expresiion { false }
+                expression { false }
             }
             environment {
                 GITHUB_OWNER = 'DEEPTHI-GH'
