@@ -31,7 +31,7 @@ def call(Map configMap){
                         aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
                         kubectl get nodes
                         echo ${deploy_to},${appVersion}
-                        kubectl apply -f application.yml
+                        #kubectl apply -f application.yml
                      """
                 }
                 }
