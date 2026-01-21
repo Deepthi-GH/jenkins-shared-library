@@ -12,7 +12,7 @@ def call(Map configMap){
         ACC_ID = "485658242739"
         PROJECT = configMap.get("project")
         COMPONENT = configMap.get("component")
-        deploy_to =  configMap.get(deploy_to)
+        deploy_to =  configMap.get("deploy_to")
         region = "us-east-1"
     }
     options {
