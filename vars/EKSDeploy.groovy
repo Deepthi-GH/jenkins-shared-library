@@ -8,7 +8,7 @@ def call(Map configMap){
     }
     environment {
         COURSE = "Jenkins"
-        appVersion = configMap.get(appVersion) #appversion comes from configmap
+        appVersion = configMap.get("appVersion") //appversion comes from configmap
         ACC_ID = "485658242739"
         PROJECT = configMap.get("project")
         COMPONENT = configMap.get("component")
@@ -31,9 +31,9 @@ def call(Map configMap){
                         aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
                         kubectl get nodes
                         echo ${deploy_to},${appVersion}
-                        #sed -i "s/IMAGE_VERSION/${appVersion}/g" values.yaml
-                        #helm upgrade --install ${COMPONENT} -f values-${deploy_to}.yaml -n ${PROJECT} --atomic --wait --timeout=5m .
-                        #kubectl apply -f ${COMPONENT}-${deploy_to}.yml
+                        //sed -i "s/IMAGE_VERSION/${appVersion}/g" values.yaml
+                        //helm upgrade --install ${COMPONENT} -f values-${deploy_to}.yaml -n ${PROJECT} --atomic --wait --timeout=5m .
+                        //kubectl apply -f ${COMPONENT}-${deploy_to}.yml
                      """
                 }
                 }
