@@ -31,7 +31,7 @@ def call(Map configMap){
                         set -e
                         aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
                         kubectl get nodes
-                        sed -i "s/IMAGE_VERSION/${appVersion}/g" values.yaml #replace these values to values.yaml.
+                        sed -i "s/IMAGE_VERSION/${appVersion}/g" values.yml #replace these values to values.yaml.
                         helm upgrade --install ${COMPONENT} -f values-${deploy_to}.yaml -n ${PROJECT} --atomic --wait --timeout=5m .
                         #if 1st time, it will take install .otherwise it will take upgrade.if deployment/pods are not ready at this stage helm should roll back to previous version.but pipeline fails.
                         #atomic means automatically wait for 5mins.if pods not available fail the pipeline.
